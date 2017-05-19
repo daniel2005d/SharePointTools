@@ -6,15 +6,17 @@ import argparse
 import sys
 import socket
 
+
 parser = argparse.ArgumentParser(description='Descubre las URLs de SharePoint' +
 'que estan sin autenticacion')
 parser.add_argument('-d', '--dominio', help='Url del dominio')
 parser.add_argument('-f', '--file', help='Archivo con las URLs de ' +
 'administracion de Sharepoint. En caso de no especificar se tomaran las que ' +
 'se establecen por defecto.')
+parser.add_argument('-v', '--version', help='Muestra la version actual', action='store_true')
 args = parser.parse_args()
 dominio = ''
-os.system('clear')
+version = 'Version 1.0'
 
 listas = ['_layouts/viewlsts.aspx','_layouts/authenticate.aspx','_layouts/settings.aspx','_catalogs/lt']
 adminlists = []
@@ -41,12 +43,16 @@ def scanear():
      except:
        print '%s %s [%s] %s' % (fg(1),urllista,sys.exc_info()[0],attr('reset'))
 
+if args.version:
+   print '%s %s %s' % (fg(11),version,attr('reset'))
+   exit(0)
+   
 if args.dominio is None:
   parser.print_help()
-else:
-  if args.dominio.endswith('/'):
+  exit(0)
+elif args.dominio.endswith('/'):
      dominio = args.dominio
-  else:
+else:
     dominio = args.dominio + '/'
 
 if args.file is None:
@@ -56,5 +62,5 @@ else:
   for l in direcciones:
      adminlists.append(l.replace('\n',''))
 
-#print adminlists
+os.system('clear')
 scanear()
