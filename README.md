@@ -6,9 +6,12 @@
 # sharepointdiscoverlists.py
 Script de Python 2.7, el cual permite descrubir todas aquellas paginas de administracin que se encuentran sin autenticacion.
 
+<b>Actualmente no Soporta SSL </b>
+
 Uso
 
 ![alt text](https://raw.githubusercontent.com/daniel2005d/SharePointTools/master/usosharepoindiscover.png  "Logo Title Text 1")
+
 
 
 ###### python sharepointdiscoverlists.py -h 
