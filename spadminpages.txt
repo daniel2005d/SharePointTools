@@ -1,0 +1,17 @@
+_catalogs/lt
+_layouts/create.aspx
+_catalogs/wp
+_layouts/15/mngsiteadmin.aspx
+/_layouts/mngsubwebs.aspx
+/_layouts/people.aspx
+/_layouts/user.aspx
+/_catalogs/masterpage
+/_layouts/AdminRecycleBin.aspx
+/_layouts/mngfield.aspx
+/_layouts/mngctype.aspx
+/_layouts/sitemanager.aspx
+/_layouts/settings.aspx
+/_catalogs/solutions/
+/_layouts/sitesubs.aspx
+/_layouts/viewlsts.aspx
+/_layouts/wrkmng.aspx
