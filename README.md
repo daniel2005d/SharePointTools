@@ -10,7 +10,7 @@ Script de Python 2.7, el cual permite descrubir todas aquellas paginas de admini
 
 Uso
 
-![alt text](https://raw.githubusercontent.com/daniel2005d/SharePointTools/master/usosharepoindiscover.png  "Logo Title Text 1")
+![alt text](https://raw.githubusercontent.com/daniel2005d/SharePointTools/master/usosharepoindiscover.png  "Ayuda")
 
 
 
@@ -22,5 +22,5 @@ Uso
 
 -d --dominio direccion url del sitio a escanear (Obligatorio)
 -f --file Direccion de Direccion de las listas, en caso de no especificar, se tomaran las que se establecen por defecto.
-```
+-s --sitemap Direccion Url donde se encuentra el sitemap```
 
