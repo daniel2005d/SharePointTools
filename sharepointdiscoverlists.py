@@ -95,7 +95,7 @@ class SharePointScanner:
         self.log('=============================', 2)
 
         for l in self.adminpages:
-            if l.startswith('http'):
+            if l.startswith('http') or l.startswith('https'):
                 urllista = l
             else:
                 urllista = self.host + l
