@@ -2,34 +2,13 @@ import os
 import requests
 import json
 import argparse
+import urllib
 from colored import fg, attr
 
 os.system("clear")
 
-def miproperties():
-    xml = requests.get(args.domain + 
-    '/_api/sp.userprofiles.peoplemanager/getmyproperties', 
-    cookies=cookies, verify=False, headers = headers)
-    data = json.loads(xml.text)
-    return data
-def printdata(data):
-    usuario = data["d"]
-    print("{}*******************************************************************{}".format(fg(190), attr('reset')))
-    for u in usuario:
-        if type(usuario[u]) is unicode:
-            print("{}{}{} : {}".format(fg('green'), u,attr('reset'),  usuario[u].encode('utf-8')))
-    print("{}*******************************************************************{}".format(fg(190), attr('reset')))
-
-def finduser(user):
-    xml = requests.get(args.domain + 
-    '/_api/sp.userprofiles.peoplemanager/getpropertiesfor(@v)?@v=' + 
-    args.user,
-    cookies=cookies, verify=False, headers = headers)
-    data = json.loads(xml.text)
-    return data
-
 def banner():
-    print("\t{}{} _____                 _        __  __                                   ".format(attr(1), fg('red')))
+    print("\t{}{}_____                 _        __  __                                   ".format(attr(1), fg('red')))
     print("\t    |  __ \               | |      |  \/  |                                  ")
     print("\t    | |__) |__  ___  _ __ | | ___  | \  / | __ _ _ __   __ _  __ _  ___ _ __ ")
     print("\t    |  ___/ _ \/ _ \| '_ \| |/ _ \ | |\/| |/ _` | '_ \ / _` |/ _` |/ _ \ '__|")
@@ -41,6 +20,31 @@ def banner():
     print("{} Daniel Vargas {} ".format(fg(226), attr('reset')))
 
 
+def miproperties():
+    xml = requests.get(args.domain + 
+    '/_api/sp.userprofiles.peoplemanager/getmyproperties', 
+    cookies=cookies, verify=False, headers = headers)
+    data = json.loads(xml.text)
+    return data
+def printdata(data):
+    if "error" in data:
+       print("{} Error: {} {}".format(fg('red'), data["error"]["message"]["value"].encode('utf-8'), attr('reset'))) 
+    else:
+        usuario = data["d"]
+        print("{}*******************************************************************{}".format(fg(190), attr('reset')))
+        for u in usuario:
+            if type(usuario[u]) is unicode:
+                print("{}{}{} : {}".format(fg('green'), u,attr('reset'),  usuario[u].encode('utf-8')))
+        print("{}*******************************************************************{}".format(fg(190), attr('reset')))
+
+def finduser(user):
+    print("Buscando usuario %s" % user)
+    xml = requests.get(args.domain + 
+    '/_api/sp.userprofiles.peoplemanager/getpropertiesfor(@v)?@v=' + 
+    user,
+    cookies=cookies, verify=False, headers = headers)
+    data = json.loads(xml.text)
+    return data
 
 parse = argparse.ArgumentParser()
 
@@ -67,7 +71,13 @@ try:
     printdata(data)
     if args.user is not None:
         print("Finding User....")
-        data = finduser(args.user)
+        usuario = urllib.quote(args.user)
+        if not usuario.startswith('%27'):
+            usuario = '%27' + usuario
+        if not usuario.endswith('%27'):
+            usuario = usuario + '%27' 
+
+        data = finduser(usuario)
         printdata(data)
 except requests.ConnectionError as ex:
     print('{} Error {}').format( fg('red'), ex.message , attr('reset'))
