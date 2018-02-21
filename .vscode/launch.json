@@ -15,8 +15,9 @@
             "env": {},
             "envFile": "${workspaceRoot}/.env",
             "args":[
-                "-phttps://www.colmedica.com/_layouts/15/viewlsts.aspx",
-                "-o/home/daniel/Escritorio/salidacolmedica.txt"
+                "-dhttps://cosabog06xz006.colmedica.com/",
+                "-f77u/PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48U1A+MCMuZnxmYmFjb2xtZWRpY2F1c2Vyc3xjLWNjNTI2NDY1NTYsMCMuZnxmYmFjb2xtZWRpY2F1c2Vyc3xjLWNjNTI2NDY1NTYsMTMxNjM3MjY4NjUyMDU3NDY1LEZhbHNlLEFVRnQ0ZldVeUtIeUwxRFdmRXJBblZBc1hMNXFjcUxMeWcwQ1lEOVZwUllHdXZFMmE0bEFtWVkvZituTXg5b3ozZ3JuT0lRTEtMNHV1OXdBWnM3aVJaRFNKUU8rVHphUnFuY0wzbTJzQWR0RFZRaHVhZ0crQVlFTU4zRjRVbzQzR1puYnl2T29MajNuVHFZZnhmaEErZ0RESnpybWxFc01CamlYWEE3NkgzK2FSZFo4Q3JRMjQ2eFg2ZU1PeXc1ZFdseTNaUzBOR095NUgzTUtIYjRYNWt2RnNaTEFiaHFUYU1lZjZYalV5Z3kzejlSeVZ5T2sveXVQZXNMOUN6T1RtSVVxR3d6S0tRY3RNdTJZTFVtNFhSQ2FWR3FxZ09yZDY2Y1lTM1Y2RVRoTm5UeXNpRlhxYysra1pTYzlLUkkvNnkvQkxuTit5bXpkcWxhZTRTODNYUT09LGh0dHBzOi8vY29zYWJvZzA2eHowMDYuY29sbWVkaWNhLmNvbS9jb3JyZWRvcmVzL2ltYWdlcy9wbGFuZXMxLnBuZzwvU1A+",
+                "-u'i:0#.f|fbacolmedicausers|c-cc79786780'"
             ],
             "debugOptions": [
                 "WaitOnAbnormalExit",

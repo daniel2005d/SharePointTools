@@ -8,7 +8,8 @@ from colored import fg, attr
 os.system("clear")
 
 def banner():
-    print("\t{}{}_____                 _        __  __                                   ".format(attr(1), fg('red')))
+    print("{}".format(fg('red')))
+    print("\t     _____                 _        __  __                                   ")
     print("\t    |  __ \               | |      |  \/  |                                  ")
     print("\t    | |__) |__  ___  _ __ | | ___  | \  / | __ _ _ __   __ _  __ _  ___ _ __ ")
     print("\t    |  ___/ _ \/ _ \| '_ \| |/ _ \ | |\/| |/ _` | '_ \ / _` |/ _` |/ _ \ '__|")
@@ -16,9 +17,8 @@ def banner():
     print("\t    |_|   \___|\___/| .__/|_|\___| |_|  |_|\__,_|_| |_|\__,_|\__, |\___|_|   ")
     print("\t                    | |                                        _/ |          ")
     print("\t                    |_|                                      |___/           {}".format(attr('reset')))
-    print("{} Version : 0.1 {} ".format(fg(183), attr('reset')))
+    print("{} Version : 0.4 {} ".format(fg(183), attr('reset')))
     print("{} Daniel Vargas {} ".format(fg(226), attr('reset')))
-
 
 def miproperties():
     xml = requests.get(args.domain + 
@@ -31,11 +31,14 @@ def printdata(data):
        print("{} Error: {} {}".format(fg('red'), data["error"]["message"]["value"].encode('utf-8'), attr('reset'))) 
     else:
         usuario = data["d"]
-        print("{}*******************************************************************{}".format(fg(190), attr('reset')))
-        for u in usuario:
-            if type(usuario[u]) is unicode:
-                print("{}{}{} : {}".format(fg('green'), u,attr('reset'),  usuario[u].encode('utf-8')))
-        print("{}*******************************************************************{}".format(fg(190), attr('reset')))
+        if "GetPropertiesFor" in usuario:
+            print("{} El usuario no existe {}".format(fg('red'), attr('reset')))
+        else:
+            print("{}*******************************************************************{}".format(fg(190), attr('reset')))
+            for u in usuario:
+                if type(usuario[u]) is unicode:
+                    print("{}{}{} : {}".format(fg('green'), u,attr('reset'),  usuario[u].encode('utf-8')))
+            print("{}*******************************************************************{}".format(fg(190), attr('reset')))
 
 def finduser(user):
     print("Buscando usuario %s" % user)
@@ -48,10 +51,17 @@ def finduser(user):
 
 parse = argparse.ArgumentParser()
 
-parse.add_argument('-d','--domain', help="Domain Url", required = True)
-parse.add_argument('-f', '--FedAuth', help = 'Session Id Value', required = True)
-parse.add_argument('-u', '--user', help = 'Find user information', required = False)
+parse.add_argument('-d','--domain', help="Domain Url")
+parse.add_argument('-f', '--FedAuth', help = 'Session Id Value')
+parse.add_argument('-u', '--user', help = 'Find user information')
+#(options, args) = parse.parse_args()
 args = parse.parse_args()
+mandatories = ['domain','FedAuth']
+
+for m in mandatories:
+    if not args.__dict__[m]:
+        parse.print_help()
+        exit(-1)
 
 headers = {
     "Accept": "application/json;odata=verbose"
