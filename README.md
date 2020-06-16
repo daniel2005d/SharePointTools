@@ -24,3 +24,11 @@ Uso
 -f --file Direccion de Direccion de las listas, en caso de no especificar, se tomaran las que se establecen por defecto.
 -s --sitemap Direccion Url donde se encuentra el sitemap```
 
+## getusers.py
+Script en python que permite obtener todos los usuarios del sitio
+
+```python
+-d --domain Dirección del sitio web
+-c --cookie, cookies que se requieren para realizar la petición. Cada una debe ir especificada a parte. Ejemplo: -c "Cookie1:Valor" -c "Cookie2:Valor2"
+
+ 
