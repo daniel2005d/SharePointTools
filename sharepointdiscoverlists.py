@@ -15,8 +15,8 @@ from bs4 import BeautifulSoup as bs
 
 class SharePointScanner:
     """Constructor de la Clase"""
-    def __init__(self, host, archivo, usarsitemap):
-
+    def __init__(self, host, archivo, usarsitemap, cookies):
+        self.cookies = cookies
         self.adminpages = ['_layouts/viewlsts.aspx', '_layouts/authenticate.aspx', '_layouts/settings.aspx', 'catalogs/lt']
         self.host = host
         self.archivo = archivo
@@ -129,6 +129,7 @@ parser.add_argument('-f', '--file', help='Archivo con las URLs de ' +
 'se establecen por defecto.')
 parser.add_argument('-s', '--sitemap', help='Direccion URL donde se encuentra el sitemap, con el fin de poder usarlo para armar las URLs')
 parser.add_argument('-v', '--version', help='Muestra la version actual', action='store_true')
+parser.add_argument('-c','--cookie',action='append',help='Establece las cookies necesarias para la invocacion. Ejemplo: -c cookie:value', required=False)
 args = parser.parse_args()
 dominio = ''
 version = 'Version 1.3'
@@ -158,7 +159,9 @@ print ("""
 
 
 """)
-sp = SharePointScanner(dominio, args. file, args.sitemap)
+
+
+sp = SharePointScanner(dominio, args. file, args.sitemap,args.cookie )
 exitosos = sp.iniciar()
 sp.log('Resumen de la Ejecucion', 3)
 sp.log('================', 231)
