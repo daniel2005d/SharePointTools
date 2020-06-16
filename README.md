@@ -23,8 +23,9 @@ Uso
 -d --dominio direccion url del sitio a escanear (Obligatorio)
 -f --file Direccion de Direccion de las listas, en caso de no especificar, se tomaran las que se establecen por defecto.
 -s --sitemap Direccion Url donde se encuentra el sitemap```
+```
 
-## getusers.py
+# getusers.py
 Script en python que permite obtener todos los usuarios del sitio
 
 ```python
